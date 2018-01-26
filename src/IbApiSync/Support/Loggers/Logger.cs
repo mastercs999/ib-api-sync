@@ -6,9 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Extensions;
 
-namespace Common.Loggers
+namespace IbApiSync.Support.Loggers
 {
     public abstract class Logger
     {

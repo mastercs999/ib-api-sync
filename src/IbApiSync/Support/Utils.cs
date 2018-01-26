@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Common
+namespace IbApiSync.Support
 {
     public static class Utils
     {
@@ -37,6 +37,11 @@ namespace Common
 
                 return wc;
             }
+        }
+
+        public static T[] GetEnumArray<T>()
+        {
+            return Enum.GetValues(typeof(T)).Cast<T>().ToArray();
         }
     }
 }

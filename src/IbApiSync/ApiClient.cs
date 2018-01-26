@@ -1,9 +1,8 @@
-﻿using Common;
-using Common.Loggers;
-using Common.Extensions;
-using IbApiSync.ApiWrapper;
+﻿using IbApiSync.ApiWrapper;
 using IbApiSync.Models;
 using IbApiSync.Support;
+using IbApiSync.Support.Exceptions;
+using IbApiSync.Support.Loggers;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -99,7 +98,7 @@ namespace IbApiSync
 
             // Find needed product
             _____________________________________________________________________________Logger.Info($"We are about to place an order {orderId} for {order.Product.Symbol} with action {order.Action.Text()} and quantity {order.Quantity}. To do so, we have to find the product...");
-            order.Product = FindProduct(order.Product.Symbol, EnumUtilities.GetArray<ProductType>().Single(x => x.Text() == order.Product.IBContract.SecType));
+            order.Product = FindProduct(order.Product.Symbol, Utils.GetEnumArray<ProductType>().Single(x => x.Text() == order.Product.IBContract.SecType));
             _____________________________________________________________________________Logger.Info($"We have found the product for the order {orderId}");
 
             // Place order

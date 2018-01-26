@@ -56,17 +56,22 @@
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Support\ConnectionException.cs" />
+    <Compile Include="Support\Exceptions\ConnectionException.cs" />
     <Compile Include="Support\DateRange.cs" />
+    <Compile Include="Support\Dumper.cs" />
     <Compile Include="Support\Enums.cs" />
     <Compile Include="Support\Extensions.cs" />
-    <Compile Include="Support\IBException.cs" />
+    <Compile Include="Support\Exceptions\IBException.cs" />
+    <Compile Include="Support\Loggers\ConsoleLogger.cs" />
+    <Compile Include="Support\Loggers\FileLogger.cs" />
+    <Compile Include="Support\Loggers\ILogger.cs" />
+    <Compile Include="Support\Loggers\Logger.cs" />
+    <Compile Include="Support\Loggers\LogLevel.cs" />
+    <Compile Include="Support\Loggers\SilentLogger.cs" />
+    <Compile Include="Support\ThreadMessage.cs" />
+    <Compile Include="Support\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{36e33a9f-f5ca-4f60-a6e8-8a0d568e0e70}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CSharpAPI\CSharpAPI.csproj">
       <Project>{8ede0744-96c2-40b0-a8dc-37df79370203}</Project>
       <Name>CSharpAPI</Name>

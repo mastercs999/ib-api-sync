@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Loggers
+namespace IbApiSync.Support.Loggers
 {
     public interface ILogger
     {

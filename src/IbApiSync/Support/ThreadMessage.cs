@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common
+namespace IbApiSync.Support
 {
-    public enum LogLevel
+    public static class ThreadMessage
     {
-        Info,
-        Warning,
-        Error
+        public static Exception ThrownException { get; set; }
     }
 }

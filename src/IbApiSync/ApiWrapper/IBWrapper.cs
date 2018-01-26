@@ -1,7 +1,4 @@
-﻿using Common;
-using Common.Loggers;
-using Common.Extensions;
-using IbApiSync.Models;
+﻿using IbApiSync.Models;
 using IbApiSync.Support;
 using IBApi;
 using System;
@@ -13,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using TimeZoneConverter;
 using System.Globalization;
+using IbApiSync.Support.Loggers;
+using IbApiSync.Support.Exceptions;
 
 namespace IbApiSync.ApiWrapper
 {
@@ -510,7 +509,7 @@ namespace IbApiSync.ApiWrapper
             {
                 Models.Order modelOrder = PlacedOrders[orderId];
 
-                OrderStatus orderStatus = EnumUtilities.GetArray<OrderStatus>().Single(x => x.Text() == orderState.Status);
+                OrderStatus orderStatus = Utils.GetEnumArray<OrderStatus>().Single(x => x.Text() == orderState.Status);
                 if (orderStatus.IsLastStatus() && orderState.Commission != decimal.MaxValue)
                 {
                     modelOrder.Commission = orderState.Commission;
@@ -542,7 +541,7 @@ namespace IbApiSync.ApiWrapper
                 if (order.AverageFillPrice != 0)
                     order.AverageFillPriceLock.Set();
 
-                order.Status = EnumUtilities.GetArray<OrderStatus>().Single(x => x.Text() == status);
+                order.Status = Utils.GetEnumArray<OrderStatus>().Single(x => x.Text() == status);
                 if (order.Status.IsLastStatus())
                     order.FinishLock.Set();
             }
