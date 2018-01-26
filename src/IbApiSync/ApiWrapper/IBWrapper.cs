@@ -111,7 +111,7 @@ namespace IbApiSync.ApiWrapper
 
             // Check if account exists
             if (!AccountNames.Contains(AccountName))
-                throw new Exception(String.Format("Given account {0} not found among these accounts found: {1}", AccountName, String.Join(", ", AccountNames)));
+                throw new IBException(String.Format("Given account {0} not found among these accounts found: {1}", AccountName, String.Join(", ", AccountNames)));
         }
         public bool IsConnected()
         {

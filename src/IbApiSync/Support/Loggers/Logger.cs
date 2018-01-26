@@ -9,16 +9,31 @@ using System.Threading.Tasks;
 
 namespace IbApiSync.Support.Loggers
 {
+    /// <summary>
+    /// Usefull class especially for the dance around preparing a log message.
+    /// </summary>
     public abstract class Logger
     {
+        /// <summary>
+        /// Last logged message
+        /// </summary>
         public string LastMessage { get; private set; }
 
+        /// <summary>
+        /// Current UTC timestamp
+        /// </summary>
         protected string Timestamp => DateTimeOffset.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffff");
 
         private string ThisNamespace = typeof(Logger).Namespace;
 
 
 
+
+        /// <summary>
+        /// Constructs info log message.
+        /// </summary>
+        /// <param name="lines">Line or mutliple lines of log message</param>
+        /// <returns>Complete log record with timestamp, stack info etc.</returns>
         protected string Info(params string[] lines)
         {
             LastMessage = lines?.FirstOrDefault();
@@ -26,6 +41,14 @@ namespace IbApiSync.Support.Loggers
             return CreateLogMessage(lines, LogLevel.Info);
         }
 
+
+
+
+        /// <summary>
+        /// Constructs warning log message.
+        /// </summary>
+        /// <param name="lines">Line or mutliple lines of log message</param>
+        /// <returns>Complete log record with timestamp, stack info etc.</returns>
         protected string Warning(params string[] lines)
         {
             LastMessage = lines?.FirstOrDefault();
@@ -33,12 +56,26 @@ namespace IbApiSync.Support.Loggers
             return CreateLogMessage(lines, LogLevel.Warning);
         }
 
+
+
+
+        /// <summary>
+        /// Constructs error log message.
+        /// </summary>
+        /// <param name="lines">Line or mutliple lines of log message.</param>
+        /// <returns>Complete log record with timestamp, stack info etc.</returns>
         protected string Error(params string[] lines)
         {
             LastMessage = lines?.FirstOrDefault();
 
             return CreateLogMessage(lines, LogLevel.Error);
         }
+
+        /// <summary>
+        /// Constructs error log message.
+        /// </summary>
+        /// <param name="ex">Exception to log.</param>
+        /// <returns>Complete log record with timestamp, stack info etc.</returns>
         protected string Error(Exception ex)
         {
             LastMessage = ex?.Message;
@@ -47,6 +84,13 @@ namespace IbApiSync.Support.Loggers
 
             return CreateLogMessage(lines.ToArray(), LogLevel.Error);
         }
+
+        /// <summary>
+        /// Constructs error log message.
+        /// </summary>
+        /// <param name="message">Text of the error.</param>
+        /// <param name="ex">Exceptions to log.</param>
+        /// <returns>Complete log record with timestamp, stack info etc.</returns>
         protected string Error(string message, Exception ex)
         {
             LastMessage = message;
@@ -57,6 +101,15 @@ namespace IbApiSync.Support.Loggers
             return CreateLogMessage(lines.ToArray(), LogLevel.Error);
         }
 
+
+
+
+        /// <summary>
+        /// Creates info message about invoked method.
+        /// </summary>
+        /// <param name="methodName">Name of the invoked method.</param>
+        /// <param name="arguments">Arguments of invoked method. Usually alternating sequence of name of the argument and its value.</param>
+        /// <returns>Complete log record with timestamp, stack info etc.</returns>
         protected string WriteMethod(string methodName, params object[] arguments)
         {
             LastMessage = "<METHOD> " + methodName;
