@@ -1,20 +1,25 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.ExceptionServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Common.Extensions
+namespace IbApiSync.Support
 {
-    public static class CustomExtensions
+    public static class Extensions
     {
+        public static OrderAction Reverse(this OrderAction orderAction)
+        {
+            return orderAction == OrderAction.Buy ? OrderAction.Sell : OrderAction.Buy;
+        }
+
+        public static bool IsLastStatus(this OrderStatus orderStatus)
+        {
+            return orderStatus == OrderStatus.Filled || orderStatus == OrderStatus.Cancelled || orderStatus == OrderStatus.Inactive;
+        }
+
         public static string Text<T>(this T source)
         {
             FieldInfo fi = source.GetType().GetField(source.ToString());
@@ -24,7 +29,7 @@ namespace Common.Extensions
         }
         public static T ToEnum<T>(this string text)
         {
-            foreach (T value in EnumUtilities.GetArray<T>())
+            foreach (T value in Utils.GetEnumArray<T>())
                 if (value.ToString() == text || value.Text() == text)
                     return value;
 
