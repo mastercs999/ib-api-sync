@@ -31,6 +31,9 @@ namespace CliExample
 
             // Let's demonstrate error handling
             ErrorHandling(api);
+
+            // Let's demonstrate searching for next trading day
+            FindNextTradingDay(api);
         }
 
         private static void BasicUsage(ApiClient api)
@@ -43,7 +46,7 @@ namespace CliExample
 
             // Let's say we want to buy 152 shares of AAPL
             // At first we need to find target product
-            Product aapl = api.FindProduct("AAPLlll", ProductType.Stock);
+            Product aapl = api.FindProduct("AAPL", ProductType.Stock);
 
             // Now we can create whatever order we want
             Order order = new Market(aapl, OrderAction.Buy, 152);
@@ -64,7 +67,6 @@ namespace CliExample
             Console.WriteLine(order.AverageFillPrice);
             Console.WriteLine(order.Commission);
         }
-
         private static void ErrorHandling(ApiClient api)
         {
             try
@@ -86,6 +88,19 @@ namespace CliExample
                     Console.WriteLine($"Code:\t{ibException.ErrorCode}");
                 }
             }
+        }
+        private static void FindNextTradingDay(ApiClient api)
+        {
+            // Find a product whose trading day we want
+            // You can also specify exchange as a third argument
+            Product product = api.FindProduct("AAPL", ProductType.Stock);
+
+            // So when is next trading day
+            DateRange nextTradingDay = product.TradingHours.OrderBy(x => x.From).First(x => x.From >= DateTimeOffset.UtcNow);
+
+            // Print what we found 
+            Console.WriteLine($"From:\t{nextTradingDay.From}");
+            Console.WriteLine($"To:\t{nextTradingDay.To}");
         }
     }
 }
