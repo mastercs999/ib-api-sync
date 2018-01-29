@@ -5,8 +5,8 @@ C# library for sync use of IB API. It wraps up basic methods for trading by nice
 * Easy sync use
 * Error handling
 * Extensive logging
-* Library and IB API uses decimals to prevent any inaccuracy
-* Whole library uses DateTimeOffset in UTC which prevents any inconvenience when dealing with date and time
+* Library and IB API uses [decimal](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/decimal) to prevent any inaccuracy
+* Whole library uses [DateTimeOffset](https://docs.microsoft.com/en-us/dotnet/standard/datetime/choosing-between-datetime) in UTC which prevents any inconvenience when dealing with date and time
 * You can get trading hours of any product to determine next trading day
 
 ## Cons
@@ -14,7 +14,7 @@ C# library for sync use of IB API. It wraps up basic methods for trading by nice
 * Not all IB API functions were properly tested. Please make sure it works as you expect before deployment.
 
 ## Example
-Example of basic usage. This you can also find in [Program.cs](src/ExampleCli/Program.cs).
+Example of basic usage. This and many more you can also find in [Program.cs](src/ExampleCli/Program.cs).
 ```cs
 // Create api instance
 ApiClient api = new ApiClient("DUXXXXXX", 0, 4002, new SilentLogger());
