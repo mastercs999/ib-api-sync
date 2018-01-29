@@ -6,7 +6,7 @@ C# library for sync use of IB API. It wraps up basic methods for trading by nice
 * Error handling
 * Extensive logging
 * Library and IB API uses [decimal](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/decimal) to prevent any inaccuracy
-* Whole library uses [DateTimeOffset](https://docs.microsoft.com/en-us/dotnet/standard/datetime/choosing-between-datetime) in UTC which prevents any inconvenience when dealing with date and time
+* Whole library uses [DateTimeOffset](https://docs.microsoft.com/en-us/dotnet/standard/datetime/choosing-between-datetime) in UTC which prevents any time zone inconvenience when dealing with date and time
 * You can get trading hours of any product to determine next trading day
 
 ## Cons
