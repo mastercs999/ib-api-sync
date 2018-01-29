@@ -15,7 +15,7 @@ C# library for sync use of IB API. It wraps up basic methods for trading by nice
 
 ## Example
 Example of basic usage. This and many more you can also find in [Program.cs](src/ExampleCli/Program.cs).
-```cs
+```csharp
 // Create api instance
 ApiClient api = new ApiClient("DUXXXXXX", 0, 4002, new SilentLogger());
 
