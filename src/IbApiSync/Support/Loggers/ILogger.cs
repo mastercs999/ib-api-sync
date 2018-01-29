@@ -40,7 +40,7 @@ namespace IbApiSync.Support.Loggers
         /// <summary>
         /// Logs an error message.
         /// </summary>
-        /// <param name="ex">Exception to log.</param>
+        /// <param name="lines">Line or multiple lines to be written into log.</param>
         void Error(params string[] lines);
 
         /// <summary>

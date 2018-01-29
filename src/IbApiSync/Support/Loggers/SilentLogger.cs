@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace IbApiSync.Support.Loggers
 {
+    /// <summary>
+    /// This class represent log which does nothing. We used in cases when we're not interested 
+    /// in log output.
+    /// </summary>
     public class SilentLogger : Logger, ILogger
     {
         /// <summary>

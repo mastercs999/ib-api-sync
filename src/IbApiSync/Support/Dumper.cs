@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace IbApiSync.Support
 {
+    /// <summary>
+    /// This class server for printing simple objects. By simple I mean it could fail for
+    /// recursive objects. I use it mostly for printing objects received from IB API.
+    /// It's capable of converting lists and objects with properties into string.
+    /// The resulting string contains name of properties and its values. Padded for beautiful
+    /// string is included.
+    /// </summary>
     public static class Dumper
     {
         private static readonly string nullString = "<NULL>";
@@ -16,11 +23,21 @@ namespace IbApiSync.Support
         private static readonly int PadLength = 30;
         private static readonly int LevelPad = 4;
 
+        /// <summary>
+        /// Converts object into string.
+        /// </summary>
+        /// <param name="obj">Any object</param>
+        /// <returns>Object's properties with their values</returns>
         public static string Dump(this object obj)
         {
             return obj.Dump(0);
         }
 
+        /// <summary>
+        /// Just a wrapper over PadRight method. Number of character is defined here.
+        /// </summary>
+        /// <param name="str">String to be padded</param>
+        /// <returns>Padded string</returns>
         public static string Pad(this string str)
         {
             return str.PadRight(PadLength);

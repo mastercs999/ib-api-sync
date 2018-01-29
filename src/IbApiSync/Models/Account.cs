@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace IbApiSync.Models
 {
+    /// <summary>
+    /// Class represanting all available information about IB account. Because I don't know what every value means, I won't
+    /// comment properties here. Everybody should use properties about which he knows what they represent.
+    /// </summary>
     public class Account
     {
         public string AccountCode { get; internal set; }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace IbApiSync.Support
 {
+    /// <summary>
+    /// Product types of products on IB.
+    /// </summary>
     public enum ProductType
     {
         [Description("STK")]
@@ -15,6 +18,9 @@ namespace IbApiSync.Support
         CFD
     }
 
+    /// <summary>
+    /// Types of available/implemented orders.
+    /// </summary>
     public enum OrderType
     {
         [Description("MKT")]
@@ -27,6 +33,9 @@ namespace IbApiSync.Support
         Stop
     }
 
+    /// <summary>
+    /// Direction of an order - buy or sell.
+    /// </summary>
     public enum OrderAction
     {
         [Description("BUY")]
@@ -35,6 +44,9 @@ namespace IbApiSync.Support
         Sell
     }
 
+    /// <summary>
+    /// All possible states of an order.
+    /// </summary>
     public enum OrderStatus
     {
         NotPlaced,

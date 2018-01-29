@@ -7,22 +7,40 @@ using System.Threading.Tasks;
 
 namespace IbApiSync.Models.Orders
 {
+    /// <summary>
+    /// Represents market order which should be executed just on next trading day open.
+    /// </summary>
     public class MarketOnOpen : Order
     {
-        private OrderAction _Action;
+        /// <summary>
+        /// Direction of the order.
+        /// </summary>
         public override OrderAction Action
         {
             get => _Action;
             set => IBOrderToPlace.Action = (_Action = value).Text();
         }
+        private OrderAction _Action;
 
-        private decimal _Quantity;
+        /// <summary>
+        /// Number of shares/units of this order.
+        /// </summary>
         public override decimal Quantity
         {
             get => _Quantity;
             set => IBOrderToPlace.TotalQuantity = _Quantity = value;
         }
+        private decimal _Quantity;
 
+
+
+
+        /// <summary>
+        /// Creates this order with specified parameters.
+        /// </summary>
+        /// <param name="product">Target product of this order.</param>
+        /// <param name="action">Direction of the order.</param>
+        /// <param name="quantity">Number of shares or just 'units' for this order.</param>
         public MarketOnOpen(Product product, OrderAction action, decimal quantity)
         {
             Product = product;
